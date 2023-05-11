@@ -27,7 +27,7 @@ driver.implicitly_wait(3)
 driver.switch_to.frame('searchIframe')
 driver.implicitly_wait(3)
 
-# TODO -> ul태그를 가져올 때 일단 스크롤을 먼저 해야함
+# ----------  list를 끝까지 scroll --------------
 
 body = driver.find_element(By.CSS_SELECTOR, 'body')
 body.click()
@@ -44,7 +44,7 @@ driver.implicitly_wait(20)  # selenium에서 가끔씩 태그 시간내에 못�
 # list들을 모두 가져옴
 lists = temp.find_elements(By.CLASS_NAME, 'qbGlu')
 
-# list에 있는 객체들 수 만큼 반복
+# list에 있는 객체들 수 만큼 반복 ****
 
 for index in range(len(lists)):
     button = lists[index].find_elements(By.TAG_NAME, 'a')
