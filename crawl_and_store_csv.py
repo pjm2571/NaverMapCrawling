@@ -1,3 +1,6 @@
+
+import csv
+
 # selenium의 webdriver를 사용하기 위한 import
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -20,6 +23,11 @@ driver = webdriver.Chrome("C:\chromedriver_win32\chromedriver")
 context = '대구 반려동물미용'
 #크롬 드라이버에 url 주소 넣고 실행
 driver.get('https://map.naver.com/v5/search/'+context+'?c=15,0,0,0,dh')
+
+f = open('output.csv', 'w', encoding='utf-8', newline='')
+wr = csv.writer(f)
+
+wr.writerow(['가게명', '위치', '오픈시간', '전화번호', '별점', '방문자 리뷰', '블로그 리뷰', '홈페이지 주소'])
 
 while True:
     # 페이지가 완전히 로딩되도록 3초동안 기다림
@@ -188,8 +196,7 @@ while True:
 
 
         # ---- 이제 csv 파일로 저장하자 ----
-
-
+        wr.writerow([title.text, place.text, schedule, phone, star_rate, visitor_review, blog_review, homepage])
 
         # -------------------------------
 
